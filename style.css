@@ -1,0 +1,10 @@
+.dropdown-open {
+    position: fixed;
+    display: flex;
+    background: #FFFFFF;
+    flex-direction: column;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    z-index: 9999; /* optional but helpful */
+}
