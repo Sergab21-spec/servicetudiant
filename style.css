@@ -1,3 +1,7 @@
+.hidden {
+    display: none;
+}
+
 .dropdown-open {
     position: fixed;
     display: flex;
@@ -6,5 +10,5 @@
     top: 100%;
     width: 100%;
     left: 0;
-    z-index: 9999; /* optional but helpful */
+    z-index: 9999; /* optionnel mais utile */
 }
