@@ -11,7 +11,6 @@ if (button && dropdown) {
         dropdown.classList.toggle("dropdown-open");
     });
 }
-<script>
 const carousel = document.getElementById('testimonialCarousel');
 const testimonials = document.querySelectorAll('.testimonial');
 let current = 0;
@@ -26,4 +25,3 @@ setInterval(() => {
   current = (current + 1) % testimonials.length;
   showTestimonial(current);
 }, 5000);
-</script>
