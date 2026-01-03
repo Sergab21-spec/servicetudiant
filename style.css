@@ -13,5 +13,14 @@
     z-index: 9999; /* optionnel mais utile */
 }
 
-.menu { display: none; }
-.menu.open { display: block; }
+nav.items-center.gap-8 { display: none; }
+.nav-wrap.open nav {
+    display: flex;
+    left: 0;
+    background: #FFFFFF;
+    width: 100%;
+    padding: 1rem;
+    top: 5rem;
+    flex-direction: column;
+    position: absolute;
+}
