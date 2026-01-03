@@ -13,7 +13,6 @@
     z-index: 9999; /* optionnel mais utile */
 }
 
-nav.items-center.gap-8 { display: none; }
 .nav-wrap.open nav {
     display: flex;
     left: 0;
