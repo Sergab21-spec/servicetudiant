@@ -12,3 +12,6 @@
     left: 0;
     z-index: 9999; /* optionnel mais utile */
 }
+
+.menu { display: none; }
+.menu.open { display: block; }
