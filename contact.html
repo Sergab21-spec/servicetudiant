@@ -1,26 +1,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
-	<link rel="icon" type="image/png" sizes="48x48" href="genfavicon-48.png">
+    <link href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/f1f5dfc70_logo.png" rel="icon">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <meta content="#000000" name="theme-color">
-    <meta content="Services Étudiant simplifie l'entretien extérieur de votre maison. Obtenez instantanément des devis personnalisés en ligne auprès d'étudiants locaux offrant des services de qualité et abordables comme le lavage de vitres, le nettoyage de gouttières et le nettoyage à haute pression. Réservez votre entretien saisonnier en toute confiance !" name="description">
-    <title>Contact - Services Étudiant</title>
+    <meta content="Service Étudiant simplifies outdoor home maintenance. Get instant, personalized quotes online from local students offering quality, affordable services like window washing, gutter cleaning, and pressure washing. Book your seasonal upkeep with confidence!" name="description">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="Base44" name="apple-mobile-web-app-title">
+    <link href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/f1f5dfc70_logo.png" rel="apple-touch-icon">
+    <link href="https://service-etudiant.base44.app/manifest.json" rel="manifest">
+    <title> Service Étudiant </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <meta content="website" property="og:type">
-    <meta content="https://servicetudiant.ca/contact/" property="og:url">
-    <meta content="Services Étudiant" property="og:title">
-    <meta content="Services Étudiant simplifie l'entretien extérieur de votre maison. Obtenez instantanément des devis personnalisés en ligne auprès d'étudiants locaux offrant des services de qualité et abordables comme le lavage de vitres, le nettoyage de gouttières et le nettoyage à haute pression. Réservez votre entretien saisonnier en toute confiance !" property="og:description">
-    <meta content="IMG_1022.JPG" property="og:image">
+    <meta content="https://service-etudiant.base44.app" property="og:url">
+    <meta content="Service Étudiant" property="og:title">
+    <meta content="Service Étudiant simplifies outdoor home maintenance. Get instant, personalized quotes online from local students offering quality, affordable services like window washing, gutter cleaning, and pressure washing. Book your seasonal upkeep with confidence!" property="og:description">
+    <meta content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/f1f5dfc70_logo.png" property="og:image">
     <meta content="summary_large_image" property="twitter:card">
-    <meta content="Services Étudiant simplifie l'entretien extérieur de votre maison. Obtenez instantanément des devis personnalisés en ligne auprès d'étudiants locaux offrant des services de qualité et abordables comme le lavage de vitres, le nettoyage de gouttières et le nettoyage à haute pression. Réservez votre entretien saisonnier en toute confiance !" property="twitter:description">
-    <meta content="IMG_1022.JPG" property="twitter:image">
-    <link href="/style.css" rel="stylesheet">
+    <meta content="https://service-etudiant.base44.app" property="twitter:url">
+    <meta content="Service Étudiant" property="twitter:title">
+    <meta content="Service Étudiant simplifies outdoor home maintenance. Get instant, personalized quotes online from local students offering quality, affordable services like window washing, gutter cleaning, and pressure washing. Book your seasonal upkeep with confidence!" property="twitter:description">
+    <meta content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/f1f5dfc70_logo.png" property="twitter:image">
+    <script defer="defer" src="/static/js/vendors.0a1f7e78.js"></script>
+    <script defer="defer" src="/static/js/main.1c53e84c.js"></script>
+    <link href="/static/css/vendors.77bf307e.css" rel="stylesheet">
+    <link href="/static/css/main.cf1cd3a6.css" rel="stylesheet">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+    
     <style>
       *,
       ::before,
@@ -1431,7 +1441,7 @@
         bottom: var(--offset-bottom)
       }
 
-      [data-sonner-toast] {
+      [data-sonner-toaster] [data-sonner-toast] {
         --y: translateY(100%);
         --lift-amount: calc(var(--lift) * var(--gap));
         z-index: var(--z-index);
@@ -1445,7 +1455,7 @@
         overflow-wrap: anywhere
       }
 
-      [data-sonner-toast][data-styled=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] {
         padding: 16px;
         background: var(--normal-bg);
         border: 1px solid var(--normal-border);
@@ -1459,25 +1469,7 @@
         gap: 6px
       }
 
-      [data-sonner-toast]:focus-visible {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, .1), 0 0 0 2px rgba(0, 0, 0, .2)
-      }
-
-      [data-sonner-toast][data-y-position=top] {
-        top: 0;
-        --y: translateY(-100%);
-        --lift: 1;
-        --lift-amount: calc(1 * var(--gap))
-      }
-
-      [data-sonner-toast][data-y-position=bottom] {
-        bottom: 0;
-        --y: translateY(100%);
-        --lift: -1;
-        --lift-amount: calc(var(--lift) * var(--gap))
-      }
-
-      [data-sonner-toast][data-styled=true] [data-description] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-description] {
         font-weight: 400;
         line-height: 1.4;
         color: #3f3f3f
@@ -1491,13 +1483,13 @@
         color: #e8e8e8
       }
 
-      [data-sonner-toast][data-styled=true] [data-title] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-title] {
         font-weight: 500;
         line-height: 1.5;
         color: inherit
       }
 
-      [data-sonner-toast][data-styled=true] [data-icon] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-icon] {
         display: flex;
         height: 16px;
         width: 16px;
@@ -1509,29 +1501,29 @@
         margin-right: var(--toast-icon-margin-end)
       }
 
-      [data-sonner-toast][data-promise=true] [data-icon]>svg {
+      [data-sonner-toaster] [data-sonner-toast][data-promise=true] [data-icon]>svg {
         opacity: 0;
         transform: scale(.8);
         transform-origin: center;
         animation: sonner-fade-in .3s ease forwards
       }
 
-      [data-sonner-toast][data-styled=true] [data-icon]>* {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-icon]>* {
         flex-shrink: 0
       }
 
-      [data-sonner-toast][data-styled=true] [data-icon] svg {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-icon] svg {
         margin-left: var(--toast-svg-margin-start);
         margin-right: var(--toast-svg-margin-end)
       }
 
-      [data-sonner-toast][data-styled=true] [data-content] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-content] {
         display: flex;
         flex-direction: column;
         gap: 2px
       }
 
-      [data-sonner-toast][data-styled=true] [data-button] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-button] {
         border-radius: 4px;
         padding-left: 8px;
         padding-right: 8px;
@@ -1551,16 +1543,16 @@
         transition: opacity .4s, box-shadow .2s
       }
 
-      [data-sonner-toast][data-styled=true] [data-button]:focus-visible {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-button]:focus-visible {
         box-shadow: 0 0 0 2px rgba(0, 0, 0, .4)
       }
 
-      [data-sonner-toast][data-styled=true] [data-button]:first-of-type {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-button]:first-of-type {
         margin-left: var(--toast-button-margin-start);
         margin-right: var(--toast-button-margin-end)
       }
 
-      [data-sonner-toast][data-styled=true] [data-cancel] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-cancel] {
         color: var(--normal-text);
         background: rgba(0, 0, 0, .08)
       }
@@ -1569,7 +1561,7 @@
         background: rgba(255, 255, 255, .3)
       }
 
-      [data-sonner-toast][data-styled=true] [data-close-button] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-close-button] {
         position: absolute;
         left: var(--toast-close-button-start);
         right: var(--toast-close-button-end);
@@ -1590,20 +1582,20 @@
         transition: opacity .1s, background .2s, border-color .2s
       }
 
-      [data-sonner-toast][data-styled=true] [data-close-button]:focus-visible {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-close-button]:focus-visible {
         box-shadow: 0 4px 12px rgba(0, 0, 0, .1), 0 0 0 2px rgba(0, 0, 0, .2)
       }
 
-      [data-sonner-toast][data-styled=true] [data-disabled=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true] [data-disabled=true] {
         cursor: not-allowed
       }
 
-      [data-sonner-toast][data-styled=true]:hover [data-close-button]:hover {
+      [data-sonner-toaster] [data-sonner-toast][data-styled=true]:hover [data-close-button]:hover {
         background: var(--gray2);
         border-color: var(--gray5)
       }
 
-      [data-sonner-toast][data-swiping=true]::before {
+      [data-sonner-toaster] [data-sonner-toast][data-swiping=true]::before {
         content: '';
         position: absolute;
         left: -100%;
@@ -1612,24 +1604,24 @@
         z-index: -1
       }
 
-      [data-sonner-toast][data-y-position=top][data-swiping=true]::before {
+      [data-sonner-toaster] [data-sonner-toast][data-y-position=top][data-swiping=true]::before {
         bottom: 50%;
         transform: scaleY(3) translateY(50%)
       }
 
-      [data-sonner-toast][data-y-position=bottom][data-swiping=true]::before {
+      [data-sonner-toaster] [data-sonner-toast][data-y-position=bottom][data-swiping=true]::before {
         top: 50%;
         transform: scaleY(3) translateY(-50%)
       }
 
-      [data-sonner-toast][data-swiping=false][data-removed=true]::before {
+      [data-sonner-toaster] [data-sonner-toast][data-swiping=false][data-removed=true]::before {
         content: '';
         position: absolute;
         inset: 0;
         transform: scaleY(2)
       }
 
-      [data-sonner-toast][data-expanded=true]::after {
+      [data-sonner-toaster] [data-sonner-toast][data-expanded=true]::after {
         content: '';
         position: absolute;
         left: 0;
@@ -1638,92 +1630,92 @@
         width: 100%
       }
 
-      [data-sonner-toast][data-mounted=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-mounted=true] {
         --y: translateY(0);
         opacity: 1
       }
 
-      [data-sonner-toast][data-expanded=false][data-front=false] {
+      [data-sonner-toaster] [data-sonner-toast][data-expanded=false][data-front=false] {
         --scale: var(--toasts-before) * 0.05 + 1;
         --y: translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));
         height: var(--front-toast-height)
       }
 
-      [data-sonner-toast]>* {
+      [data-sonner-toaster] [data-sonner-toast]>* {
         transition: opacity .4s
       }
 
-      [data-sonner-toast][data-x-position=right] {
+      [data-sonner-toaster] [data-sonner-toast][data-x-position=right] {
         right: 0
       }
 
-      [data-sonner-toast][data-x-position=left] {
+      [data-sonner-toaster] [data-sonner-toast][data-x-position=left] {
         left: 0
       }
 
-      [data-sonner-toast][data-expanded=false][data-front=false][data-styled=true]>* {
+      [data-sonner-toaster] [data-sonner-toast][data-expanded=false][data-front=false][data-styled=true]>* {
         opacity: 0
       }
 
-      [data-sonner-toast][data-visible=false] {
+      [data-sonner-toaster] [data-sonner-toast][data-visible=false] {
         opacity: 0;
         pointer-events: none
       }
 
-      [data-sonner-toast][data-mounted=true][data-expanded=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-mounted=true][data-expanded=true] {
         --y: translateY(calc(var(--lift) * var(--offset)));
         height: var(--initial-height)
       }
 
-      [data-sonner-toast][data-removed=true][data-front=true][data-swipe-out=false] {
+      [data-sonner-toaster] [data-sonner-toast][data-removed=true][data-front=true][data-swipe-out=false] {
         --y: translateY(calc(var(--lift) * -100%));
         opacity: 0
       }
 
-      [data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=true] {
         --y: translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));
         opacity: 0
       }
 
-      [data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=false] {
+      [data-sonner-toaster] [data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=false] {
         --y: translateY(40%);
         opacity: 0;
         transition: transform .5s, opacity .2s
       }
 
-      [data-sonner-toast][data-removed=true][data-front=false]::before {
+      [data-sonner-toaster] [data-sonner-toast][data-removed=true][data-front=false]::before {
         height: calc(var(--initial-height) + 20%)
       }
 
-      [data-sonner-toast][data-swiping=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-swiping=true] {
         transform: var(--y) translateY(var(--swipe-amount-y, 0)) translateX(var(--swipe-amount-x, 0));
         transition: none
       }
 
-      [data-sonner-toast][data-swiped=true] {
+      [data-sonner-toaster] [data-sonner-toast][data-swiped=true] {
         user-select: none
       }
 
-      [data-sonner-toast][data-swipe-out=true][data-y-position=bottom],
-      [data-sonner-toast][data-swipe-out=true][data-y-position=top] {
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-y-position=bottom],
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-y-position=top] {
         animation-duration: .2s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards
       }
 
-      [data-sonner-toast][data-swipe-out=true][data-swipe-direction=left] {
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-swipe-direction=left] {
         animation-name: swipe-out-left
       }
 
-      [data-sonner-toast][data-swipe-out=true][data-swipe-direction=right] {
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-swipe-direction=right] {
         animation-name: swipe-out-right
       }
 
-      [data-sonner-toast][data-swipe-out=true][data-swipe-direction=up] {
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-swipe-direction=up] {
         animation-name: swipe-out-up
       }
 
-      [data-sonner-toast][data-swipe-out=true][data-swipe-direction=down] {
+      [data-sonner-toaster] [data-sonner-toast][data-swipe-out=true][data-swipe-direction=down] {
         animation-name: swipe-out-down
       }
 
@@ -2099,6 +2091,23 @@
           <div data-rht-toaster="" style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div>
         </div>
         <div class="min-h-screen w-full relative app-preview">
+          <div dir="ltr" class="fixed z-50 text-white bottom-4 right-4 flex items-center gap-2 bg-black pt-2 pb-2 pl-3 pr-3 rounded-md shadow-lg cursor-pointer transition-all hover:shadow-xl border border-neutral-800">
+            <img src="https://base44.app/logo_v3.png" alt="base44" class="w-5 h-5">
+            <span class="whitespace-nowrap text-xs">
+              <div class="flex items-center gap-1.5 align-middle justify-center text-sm">
+                <span>Edit with </span>
+                <span class="mb-0.5">
+                  <img src="/base44_text.png" alt="Base44" height="18" width="56">
+                </span>
+              </div>
+            </span>
+            <button class="p-0.5 ml-0.5 rounded-full hover:bg-neutral-700 transition-colors" aria-label="Close badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x w-3.5 h-3.5">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
           <div class="flex flex-col w-full h-full" id="app-demo">
             <div class="bg-white w-full min-h-full overflow-auto">
               <div id="component-preview-container">
@@ -2161,17 +2170,17 @@
                   </style>
                   <header data-filename="layout" data-linenumber="105" data-visual-selector-id="layout105" data-source-location="layout:105:6" data-dynamic-content="true" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 translate-y-0 bg-white/80 backdrop-blur-sm">
                     <div data-filename="layout" data-linenumber="114" data-visual-selector-id="layout114" data-source-location="layout:114:8" data-dynamic-content="true" class="container mx-auto px-4">
-                      <div id="navWrap" class="nav-wrap flex items-center justify-between h-24">
+                      <div data-filename="layout" data-linenumber="115" data-visual-selector-id="layout115" data-source-location="layout:115:10" data-dynamic-content="true" class="flex items-center justify-between h-24">
                         <a data-filename="layout" data-linenumber="117" data-visual-selector-id="layout117" data-source-location="layout:117:12" data-dynamic-content="false" class="flex items-center" href="/">
                           <img data-filename="layout" data-linenumber="118" data-visual-selector-id="layout118" data-source-location="layout:118:14" data-dynamic-content="false" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/99fddf4b2_Modledorigine3.png" alt="Service Étudiant" class="h-16 md:h-20 w-auto logo-glow">
                         </a>
-                        <nav id="dropdown" data-filename="layout" data-linenumber="126" data-visual-selector-id="layout126" data-source-location="layout:126:12" data-dynamic-content="true" class="hidden lg:flex items-center gap-8">
+                        <nav data-filename="layout" data-linenumber="126" data-visual-selector-id="layout126" data-source-location="layout:126:12" data-dynamic-content="true" class="hidden lg:flex items-center gap-8">
                           <a data-filename="layout" data-linenumber="128" data-visual-selector-id="layout128" data-source-location="layout:128:16" data-dynamic-content="true" class="text-sm font-medium transition-colors hover:text-blue-600 text-gray-700" href="/">Accueil</a>
                           <a data-filename="layout" data-linenumber="128" data-visual-selector-id="layout128" data-source-location="layout:128:16" data-dynamic-content="true" class="text-sm font-medium transition-colors hover:text-blue-600 text-gray-700" href="/services">Services</a>
                           <a data-filename="layout" data-linenumber="128" data-visual-selector-id="layout128" data-source-location="layout:128:16" data-dynamic-content="true" class="text-sm font-medium transition-colors hover:text-blue-600 text-gray-700" href="/a-propos">À propos</a>
                           <a data-filename="layout" data-linenumber="128" data-visual-selector-id="layout128" data-source-location="layout:128:16" data-dynamic-content="true" class="text-sm font-medium transition-colors hover:text-blue-600 text-blue-600" href="/contact">Contact</a>
                         </nav>
-                        <button id="openDropdown" data-filename="layout" data-linenumber="144" data-visual-selector-id="layout144" data-source-location="layout:144:12" data-dynamic-content="true" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                        <button data-filename="layout" data-linenumber="144" data-visual-selector-id="layout144" data-source-location="layout:144:12" data-dynamic-content="true" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6 text-gray-900" data-filename="layout" data-linenumber="151" data-visual-selector-id="layout151" data-source-location="layout:151:16" data-dynamic-content="false">
                             <line x1="4" x2="20" y1="12" y2="12"></line>
                             <line x1="4" x2="20" y1="6" y2="6"></line>
@@ -2230,7 +2239,7 @@
                                         </div>
                                         <div data-filename="pages/contact" data-linenumber="105" data-visual-selector-id="pages/contact105" data-source-location="pages/contact:105:26" data-dynamic-content="true">
                                           <h3 data-filename="pages/contact" data-linenumber="106" data-visual-selector-id="pages/contact106" data-source-location="pages/contact:106:28" data-dynamic-content="true" class="font-bold text-gray-900 mb-1">Courriel</h3>
-                                          <a data-filename="pages/contact" data-linenumber="110" data-visual-selector-id="pages/contact110" data-source-location="pages/contact:110:30" data-dynamic-content="true" href="mailto:info@servicetudiant.ca" class="text-blue-600 hover:text-blue-700 transition-colors">info@servicetudiant.ca</a>
+                                          <a data-filename="pages/contact" data-linenumber="110" data-visual-selector-id="pages/contact110" data-source-location="pages/contact:110:30" data-dynamic-content="true" href="mailto:info@servicetudiant.com" class="text-blue-600 hover:text-blue-700 transition-colors">info@servicetudiant.com</a>
                                         </div>
                                       </div>
                                     </div>
@@ -2261,7 +2270,7 @@
                                           <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
                                         </svg>WhatsApp </button>
                                     </a>
-                                    <a data-filename="pages/contact" data-linenumber="146" data-visual-selector-id="pages/contact146" data-source-location="pages/contact:146:20" data-dynamic-content="false" href="https://facebook.com/people/Service-Propreté/61573929365668/" target="_blank" rel="noopener noreferrer" class="flex-1">
+                                    <a data-filename="pages/contact" data-linenumber="146" data-visual-selector-id="pages/contact146" data-source-location="pages/contact:146:20" data-dynamic-content="false" href="https://m.me/serviceetudiant" target="_blank" rel="noopener noreferrer" class="flex-1">
                                       <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-background hover:text-accent-foreground h-10 px-4 py-2 w-full border-2 border-blue-500 text-blue-600 hover:bg-blue-50" data-filename="pages/contact" data-linenumber="152" data-visual-selector-id="pages/contact152" data-source-location="pages/contact:152:22" data-dynamic-content="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle w-4 h-4 mr-2" data-filename="pages/contact" data-linenumber="156" data-visual-selector-id="pages/contact156" data-source-location="pages/contact:156:24" data-dynamic-content="false">
                                           <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
@@ -2277,27 +2286,39 @@
                                   </div>
                                   <div class="p-6 pt-0" data-filename="pages/contact" data-linenumber="170" data-visual-selector-id="pages/contact170" data-source-location="pages/contact:170:18" data-dynamic-content="true">
                                     <form id="contactForm" class="space-y-4">
-                                      <div data-filename="pages/contact" data-linenumber="181" data-visual-selector-id="pages/contact181" data-source-location="pages/contact:181:22" data-dynamic-content="true">
-                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-filename="pages/contact" data-linenumber="182" data-visual-selector-id="pages/contact182" data-source-location="pages/contact:182:24" data-dynamic-content="false" for="name">Nom complet *</label>
-                                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" data-filename="pages/contact" data-linenumber="183" data-visual-selector-id="pages/contact183" data-source-location="pages/contact:183:24" data-dynamic-content="false" id="name" required="" placeholder="Jean Tremblay" value="">
+                                      <div>
+                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Nom complet *</label>
+                                        <input class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="name" name="name" required placeholder="Jean Tremblay">
                                       </div>
-                                      <div data-filename="pages/contact" data-linenumber="194" data-visual-selector-id="pages/contact194" data-source-location="pages/contact:194:22" data-dynamic-content="true">
-                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-filename="pages/contact" data-linenumber="195" data-visual-selector-id="pages/contact195" data-source-location="pages/contact:195:24" data-dynamic-content="false" for="email">Courriel *</label>
-                                        <input type="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" data-filename="pages/contact" data-linenumber="196" data-visual-selector-id="pages/contact196" data-source-location="pages/contact:196:24" data-dynamic-content="false" id="email" required="" placeholder="jean@example.com" value="">
+                                      <div>
+                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Courriel *</label>
+                                        <input type="email" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="email" name="email" required placeholder="jean@example.com">
                                       </div>
-                                      <div data-filename="pages/contact" data-linenumber="208" data-visual-selector-id="pages/contact208" data-source-location="pages/contact:208:22" data-dynamic-content="true">
-                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-filename="pages/contact" data-linenumber="209" data-visual-selector-id="pages/contact209" data-source-location="pages/contact:209:24" data-dynamic-content="false" for="phone">Téléphone</label>
-                                        <input type="tel" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" data-filename="pages/contact" data-linenumber="210" data-visual-selector-id="pages/contact210" data-source-location="pages/contact:210:24" data-dynamic-content="false" id="phone" placeholder="450-518-0629" value="">
+                                      <div>
+                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="phone">Téléphone</label>
+                                        <input type="tel" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm" id="phone" name="phone" placeholder="450-518-0629">
                                       </div>
-                                      <div data-filename="pages/contact" data-linenumber="221" data-visual-selector-id="pages/contact221" data-source-location="pages/contact:221:22" data-dynamic-content="true">
-                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" data-filename="pages/contact" data-linenumber="222" data-visual-selector-id="pages/contact222" data-source-location="pages/contact:222:24" data-dynamic-content="false" for="message">Message *</label>
-                                        <textarea class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" data-filename="pages/contact" data-linenumber="223" data-visual-selector-id="pages/contact223" data-source-location="pages/contact:223:24" data-dynamic-content="false" id="message" required="" placeholder="Comment pouvons-nous vous aider?" rows="6"></textarea>
+                                      <div>
+                                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="message">Message *</label>
+                                        <textarea class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="message" name="message" required placeholder="Comment pouvons-nous vous aider?" rows="6"></textarea>
                                       </div>
-                                      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600" data-filename="pages/contact" data-linenumber="235" data-visual-selector-id="pages/contact235" data-source-location="pages/contact:235:22" data-dynamic-content="true" type="submit">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-4 h-4 mr-2" data-filename="pages/contact" data-linenumber="244" data-visual-selector-id="pages/contact244" data-source-location="pages/contact:244:28" data-dynamic-content="false">
+                                      
+                                      <!-- Messages de statut -->
+                                      <div id="successMessage" class="hidden p-4 rounded-lg bg-green-50 border border-green-200 text-green-800">
+                                        ✅ Message envoyé avec succès ! Nous vous répondrons dans les 24h.
+                                      </div>
+                                      
+                                      <div id="errorMessage" class="hidden p-4 rounded-lg bg-red-50 border border-red-200 text-red-800">
+                                        ❌ Une erreur est survenue. Veuillez réessayer.
+                                      </div>
+                                      
+                                      <button type="submit" id="submitBtn" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-4 h-4 mr-2">
                                           <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
                                           <path d="m21.854 2.147-10.94 10.939"></path>
-                                        </svg>Envoyer le message </button>
+                                        </svg>
+                                        Envoyer le message
+                                      </button>
                                     </form>
                                   </div>
                                 </div>
@@ -2339,7 +2360,7 @@
                     <div data-filename="layout" data-linenumber="185" data-visual-selector-id="layout185" data-source-location="layout:185:8" data-dynamic-content="true" class="container mx-auto px-4 py-12">
                       <div data-filename="layout" data-linenumber="186" data-visual-selector-id="layout186" data-source-location="layout:186:10" data-dynamic-content="true" class="grid md:grid-cols-4 gap-8">
                         <div data-filename="layout" data-linenumber="188" data-visual-selector-id="layout188" data-source-location="layout:188:12" data-dynamic-content="true" class="md:col-span-2">
-                          <img data-filename="layout" data-linenumber="189" data-visual-selector-id="layout189" data-source-location="layout:189:14" data-dynamic-content="false" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/99fddf4b2_Modledorigine3.png" alt="Service Étudiant" class="h-16 w-auto mb-4 opacity-90">
+                          <img data-filename="layout" data-linenumber="189" data-visual-selector-id="layout189" data-source-location="layout:189:14" data-dynamic-content="false" src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eda0ce4f76a7817709db7b/99fddf4b2_Modledorigine3.png" alt="Service Étudiant" class="h-16 w-auto mb-4 opacity-90" style="filter: brightness(0) invert(1);">
                           <p data-filename="layout" data-linenumber="195" data-visual-selector-id="layout195" data-source-location="layout:195:14" data-dynamic-content="false" class="text-gray-400 mb-4">L'entretien résidentiel à prix étudiant, fait avec soin. Des étudiants du coin au service de votre résidence.</p>
                           <div data-filename="layout" data-linenumber="198" data-visual-selector-id="layout198" data-source-location="layout:198:14" data-dynamic-content="false" class="flex gap-4">
                             <a data-filename="layout" data-linenumber="199" data-visual-selector-id="layout199" data-source-location="layout:199:16" data-dynamic-content="false" href="tel:+14505180629" class="text-gray-400 hover:text-white transition-colors">
@@ -2347,7 +2368,7 @@
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                               </svg>
                             </a>
-                            <a data-filename="layout" data-linenumber="202" data-visual-selector-id="layout202" data-source-location="layout:202:16" data-dynamic-content="false" href="mailto:info@servicetudiant.ca" class="text-gray-400 hover:text-white transition-colors">
+                            <a data-filename="layout" data-linenumber="202" data-visual-selector-id="layout202" data-source-location="layout:202:16" data-dynamic-content="false" href="mailto:info@servicetudiant.com" class="text-gray-400 hover:text-white transition-colors">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5" data-filename="layout" data-linenumber="203" data-visual-selector-id="layout203" data-source-location="layout:203:18" data-dynamic-content="false">
                                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
@@ -2386,7 +2407,7 @@
                                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                               </svg>
-                              <span data-filename="layout" data-linenumber="235" data-visual-selector-id="layout235" data-source-location="layout:235:18" data-dynamic-content="false">info@servicetudiant.ca</span>
+                              <span data-filename="layout" data-linenumber="235" data-visual-selector-id="layout235" data-source-location="layout:235:18" data-dynamic-content="false">info@servicetudiant.com</span>
                             </li>
                             <li data-filename="layout" data-linenumber="237" data-visual-selector-id="layout237" data-source-location="layout:237:16" data-dynamic-content="false" class="flex items-start gap-2">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4 mt-1 flex-shrink-0" data-filename="layout" data-linenumber="238" data-visual-selector-id="layout238" data-source-location="layout:238:18" data-dynamic-content="false">
@@ -2410,9 +2431,111 @@
         </div>
       </div>
     </div>
-	<script src="/script.js" defer></script>
+    
+    <!-- Configuration Firebase et Logique du Formulaire -->
+    <script>
+      // REMPLACEZ CES VALEURS PAR VOS VRAIES CLÉS FIREBASE
+      const firebaseConfig = {
+		  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCwbRpOjGm6fuIzyyH5g5cgDZJW32KZvZk",
+  authDomain: "formulaire-site-web-e97a7.firebaseapp.com",
+  projectId: "formulaire-site-web-e97a7",
+  storageBucket: "formulaire-site-web-e97a7.firebasestorage.app",
+  messagingSenderId: "119142251284",
+  appId: "1:119142251284:web:9a65a0f4d2238b76c46001",
+  measurementId: "G-MCBXNH96WE"
+};
+      
+      // Initialiser Firebase
+      try {
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        console.log("Firebase initialisé avec succès!");
+      } catch (error) {
+        console.error("Erreur d'initialisation Firebase:", error);
+      }
+      
+      // Gestion du formulaire
+      document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Vérifier si Firebase est initialisé
+            if (!firebase.apps.length) {
+              errorMessage.textContent = "Erreur: Firebase n'est pas initialisé.";
+              errorMessage.classList.remove('hidden');
+              return;
+            }
+            
+            // Désactiver le bouton pendant l'envoi
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+              <svg class="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Envoi en cours...
+            `;
+            
+            // Cacher les messages précédents
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            
+            // Récupérer les valeurs du formulaire
+            const formData = {
+              name: document.getElementById('name').value,
+              email: document.getElementById('email').value,
+              phone: document.getElementById('phone').value,
+              message: document.getElementById('message').value,
+              timestamp: new Date().toISOString(),
+              date: new Date().toLocaleDateString('fr-CA'),
+              status: 'new',
+              read: false
+            };
+            
+            try {
+              // Envoyer à Firestore
+              await firebase.firestore().collection('contacts').add(formData);
+              
+              // Afficher message de succès
+              successMessage.classList.remove('hidden');
+              
+              // Réinitialiser le formulaire
+              contactForm.reset();
+              
+              // Cacher le message après 5 secondes
+              setTimeout(() => {
+                successMessage.classList.add('hidden');
+              }, 5000);
+              
+            } catch (error) {
+              console.error('Erreur Firebase:', error);
+              errorMessage.textContent = "❌ Erreur: " + error.message;
+              errorMessage.classList.remove('hidden');
+              
+            } finally {
+              // Réactiver le bouton
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalText;
+            }
+          });
+        }
+      });
+    </script>
+    
+    <iframe name="__privateStripeMetricsController9680" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html#url=https%3A%2F%2Fservice-etudiant.base44.app%2FContact&amp;title=Service%20%C3%89tudiant&amp;referrer=https%3A%2F%2Fservice-etudiant.base44.app%2Flogin&amp;muid=0b1a168b-0f31-4237-8908-7f94f50855f3f80273&amp;sid=6e3f259a-3706-4ecb-99d0-41a00b05261965e652&amp;version=6&amp;preview=false&amp;__shared_params__[version]=v3" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe>
   </body>
 </html>
+
 
 
 
