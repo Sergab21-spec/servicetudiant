@@ -12,7 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
 // ===============================
-// CONFIG FIREBASE (LA TIENNE)
+// CONFIG FIREBASE
 // ===============================
 const firebaseConfig = {
   apiKey: "AIzaSyCwbRpOjGm6fuIzyyH5g5cgDZJW32KZvZk",
@@ -33,14 +33,17 @@ const db = getFirestore(app);
 console.log("🔥 Firebase connecté");
 
 // ===============================
-// MENU DROPDOWN (TON CODE)
+// MENU DROPDOWN
 // ===============================
 const button = document.getElementById("openDropdown");
 const dropdown = document.getElementById("navWrap");
 
+console.log("Menu elements:", button, dropdown);
+
 if (button && dropdown) {
   button.addEventListener("click", () => {
     dropdown.classList.toggle("open");
+    console.log("Dropdown class:", dropdown.className);
   });
 }
 
@@ -80,19 +83,6 @@ if (form) {
       status.textContent = "❌ Erreur lors de l’envoi";
       status.className = "text-sm text-red-600 text-center mt-4";
     }
-  });
-}
-console.log("SCRIPT LOADED");
-
-const button = document.getElementById("openDropdown");
-const dropdown = document.getElementById("navWrap");
-
-console.log(button, dropdown);
-
-if (button && dropdown) {
-  button.addEventListener("click", () => {
-    dropdown.classList.toggle("open");
-    console.log(dropdown.className);
   });
 }
 
