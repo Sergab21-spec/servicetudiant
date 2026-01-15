@@ -2434,13 +2434,20 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+		
+		 };
+		const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const messageInput = document.getElementById("message");
 
-      const data = {
-        name: name.value,
-        email: email.value,
-        phone: phone.value,
-        message: message.value,
-        createdAt: new Date()
+const data = {
+  name: nameInput?.value || "",
+  email: emailInput?.value || "",
+  phone: phoneInput?.value || "",
+  message: messageInput?.value || "",
+  createdAt: new Date()
+	
       };
 
       try {
@@ -2457,6 +2464,7 @@
 	  <script src="contact-form.js"></script>
  </body>
 </html>
+
 
 
 
