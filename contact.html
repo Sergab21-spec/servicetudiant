@@ -2413,9 +2413,9 @@
         </div>
       </div>
     </div>
-			  
-	  <script>
- const firebaseConfig = {
+	  
+			<script>
+  const firebaseConfig = {
     apiKey: "AIzaSyCwbRpOjGm6fuIzyyH5g5cgDZJW32KZvZk",
     authDomain: "formulaire-site-web-e97a7.firebaseapp.com",
     projectId: "formulaire-site-web-e97a7",
@@ -2434,20 +2434,18 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-		
-		 };
-		const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const phoneInput = document.getElementById("phone");
-const messageInput = document.getElementById("message");
 
-const data = {
-  name: nameInput?.value || "",
-  email: emailInput?.value || "",
-  phone: phoneInput?.value || "",
-  message: messageInput?.value || "",
-  createdAt: new Date()
-	
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const messageInput = document.getElementById("message");
+
+      const data = {
+        name: nameInput?.value || "",
+        email: emailInput?.value || "",
+        phone: phoneInput?.value || "",
+        message: messageInput?.value || "",
+        createdAt: new Date()
       };
 
       try {
@@ -2464,6 +2462,7 @@ const data = {
 	  <script src="contact-form.js"></script>
  </body>
 </html>
+
 
 
 
