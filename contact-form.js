@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
-                Précision: document.getElementById('Précision').value
+                Message: document.getElementById('Message').value
             };
             
             // Validation basique
